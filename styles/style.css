@@ -38,10 +38,13 @@ ul, ol {
 }
 
 .result {
-  height: 456px;
+  min-height: 456px;
 }
 
 .result__video {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
 }
 
@@ -49,7 +52,6 @@ ul, ol {
   width: 711px;
   height: 386px;
   margin-bottom: 16px;
-  /*background: blue;*/
   position: relative;
 }
 
@@ -59,17 +61,6 @@ ul, ol {
   align-items: end;
   font-size: 18px;
   /*background: blueviolet;*/
-}
-
-video {
-  width: 100%;
-  height: 100%;
-}
-
-.content__details {
-  /*background: darkcyan;*/
-  width: 399px;
-  height: 534px;
 }
 
 .title {
@@ -97,6 +88,8 @@ video {
 .content__video-card-thumbnail {
   width: 194px;
   height: 103px;
+  object-fit: cover;
+  object-position: 50% 50%;
 }
 
 .content__video-card-title {
@@ -235,40 +228,33 @@ fieldset {
   display: flex;
   gap: 5px;
 }
-.search-form__pseudo-checkbox {
+
+.search-form__checkbox[type='checkbox'] + .search-form__pseudo-checkbox {
   display: block;
+  position: relative;
   width: 19px;
   height: 19px;
   border: 1px solid white;
 }
 
-input[type='checkbox']:checked + span {
-  background-image: url(../images/check.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  /**/
-}
-input[type='checkbox']:hover + span {
-  background-image: url(../images/check.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+.search-form__checkbox[type="checkbox"]:not(:checked) + .search-form__pseudo-checkbox::after {
+  opacity: 0;
 }
 
-input[type='checkbox']:hover ~ span {
+.search-form__checkbox[type="checkbox"]:checked + .search-form__pseudo-checkbox::after,
+.search-form__checkbox[type="checkbox"]:hover + .search-form__pseudo-checkbox::after{
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  width: 13px;
+  height: 13px;
+  background-color: #ffffff;
+}
+
+.search-form__checkbox[type='checkbox']:hover ~ span {
   text-decoration: underline;
   cursor: pointer;
 }
 
-.error__title {
-  font-family: 'Oswald', sans-serif;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 30px;
-  line-height: 110%;
-  text-align: center;
-  text-transform: uppercase;
 
-  color: #FFFFFF;
-}
