@@ -244,7 +244,8 @@ fieldset {
 .search-form__checkbox[type="checkbox"]:checked + .search-form__pseudo-checkbox::after,
 .search-form__checkbox[type="checkbox"]:hover + .search-form__pseudo-checkbox::after{
   content: "";
-  position: absolute;
+  /*position: absolute;*/
+  /*когда я ставлю position absolute работа не проходит тест*/
   left: 2px;
   top: 2px;
   width: 13px;
